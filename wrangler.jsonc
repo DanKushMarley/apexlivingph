@@ -11,7 +11,8 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "apexliving"
+      "service": "apexlivingph"
+
     }
   ],
   "images": {
