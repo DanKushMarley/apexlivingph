@@ -1,0 +1,183 @@
+# Apex Living PH — Web Folder Hierarchy & Starter Code
+
+## Recommended Project Structure
+
+```txt
+apex-living-ph/
+│
+├── index.html
+├── about.html
+├── services.html
+├── properties.html
+├── travel.html
+├── contact.html
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── responsive.css
+│   │   └── animations.css
+│   │
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── slider.js
+│   │   └── booking.js
+│   │
+│   ├── images/
+│   │   ├── logo/
+│   │   │   ├── apex-logo.png
+│   │   │   └── favicon.png
+│   │   │
+│   │   ├── banners/
+│   │   │   ├── hero-banner.jpg
+│   │   │   ├── travel-banner.jpg
+│   │   │   └── property-banner.jpg
+│   │   │
+│   │   ├── properties/
+│   │   ├── travel/
+│   │   └── icons/
+│   │
+│   └── fonts/
+│
+├── components/
+│   ├── navbar.html
+│   ├── footer.html
+│   ├── booking-form.html
+│   └── property-card.html
+│
+├── backend/
+│   ├── api/
+│   ├── config/
+│   ├── database/
+│   └── uploads/
+│
+├── admin/
+│   ├── dashboard.html
+│   ├── users.html
+│   ├── listings.html
+│   └── bookings.html
+│
+└── README.md
+```
+
+---
+
+# Main Homepage Design (index.html)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Living PH</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="assets/images/logo/apex-logo.png" alt="Apex Living PH">
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Properties</a></li>
+                <li><a href="#">Travel</a></li>
+                <li><a href="#">Hotels</a></li>
+                <li><a href="#">Tours</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <h3>YOUR GLOBAL PARTNER IN</h3>
+
+            <h1>
+                LIVING <br>
+                & TRAVEL
+            </h1>
+
+            <p>
+                Homes. Travel. Experiences. Worldwide.
+            </p>
+
+            <div class="services-icons">
+
+                <div class="service-box">
+                    <span>🏢</span>
+                    <h4>Real Estate</h4>
+                </div>
+
+                <div class="service-box">
+                    <span>✈️</span>
+                    <h4>Flight Booking</h4>
+                </div>
+
+                <div class="service-box">
+                    <span>🏨</span>
+                    <h4>Hotel Reservations</h4>
+                </div>
+
+                <div class="service-box">
+                    <span>🌴</span>
+                    <h4>Tours & Experiences</h4>
+                </div>
+
+            </div>
+
+            <a href="#" class="btn-primary">Explore Services</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features">
+
+        <div class="feature-item">
+            <h2>Properties</h2>
+        </div>
+
+        <div class="feature-item">
+            <h2>Travel</h2>
+        </div>
+
+        <div class="feature-item">
+            <h2>Experiences</h2>
+        </div>
+
+        <div class="feature-item">
+            <h2>Global Reach</h2>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 Apex Living PH. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+apex-living-ph/
+│Apex Living PH — Web Folder Hierarchy & Starter Code
+├── index.html
+├── about.html
+├── services.html
+├── properties.html
+├── travel.html
+├── contact.html
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── responsive.css
+│   │   └── animations.css
+│   │
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── slider.js
+│   │   └── booking.js
+│   │
+│   ├── images/
+│   │   ├── logo/
+│   │   │   ├── apex-logo.png
+│   │   │   └── favicon.png
+│   │   │
+│   │   ├── banners/
+│   │   │   ├── hero-banner.jpg
+│   │   │   ├── travel-banner.jpg
+│   │   │   └── property-banner.jpg
+│   │   │
+│   │   ├── properties/
+│   │   ├── travel/
+│   │   └── icons/
+│   │
+│   └── fonts/
+│
+├── components/
+│   ├── navbar.html
+│   ├── footer.html
+│   ├── booking-form.html
+│   └── property-card.html
+│
+├── backend/
+│   ├── api/
+│   ├── config/
+│   ├── database/
+│   └── uploads/
+│
+├── admin/
+│   ├── dashboard.html
+│   ├── users.html
+│   ├── listings.html
+│   └── bookings.html
+│
+└── README.md
