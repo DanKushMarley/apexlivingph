@@ -1,21 +1,23 @@
-const services = [
-  { emoji: "\u{1F3E2}", title: "Real Estate", desc: "Premium property investments" },
-  { emoji: "\u{2708}\u{FE0F}", title: "Flight Booking", desc: "International & domestic ticketing" },
-  { emoji: "\u{1F3E8}", title: "Hotel Reservations", desc: "Worldwide hotel and resort bookings" },
-  { emoji: "\u{1F334}", title: "Tours & Experiences", desc: "Curated travel packages" },
+const fs = require('fs');
+
+const page = `const services = [
+  { emoji: "\\u{1F3E2}", title: "Real Estate", desc: "Premium property investments" },
+  { emoji: "\\u{2708}\\u{FE0F}", title: "Flight Booking", desc: "International & domestic ticketing" },
+  { emoji: "\\u{1F3E8}", title: "Hotel Reservations", desc: "Worldwide hotel and resort bookings" },
+  { emoji: "\\u{1F334}", title: "Tours & Experiences", desc: "Curated travel packages" },
 ];
 
 const pkgs = [
-  { name: "Palawan Paradise", price: "\u20B112,999", dur: "4D/3N", emoji: "\u{1F3DD}", desc: "El Nido island hopping, underground river" },
-  { name: "Boracay Bliss", price: "\u20B19,999", dur: "3D/2N", emoji: "\u{1F3D6}", desc: "White beach, water sports, sunset sailing" },
-  { name: "Dubai Explorer", price: "\u20B135,999", dur: "5D/4N", emoji: "\u{1F3D9}", desc: "Burj Khalifa, desert safari, city tours" },
-  { name: "Tokyo Discovery", price: "\u20B132,999", dur: "5D/4N", emoji: "\u{1F5FE}", desc: "Mt. Fuji, Shibuya, temples, food tours" },
+  { name: "Palawan Paradise", price: "\\u20B112,999", dur: "4D/3N", emoji: "\\u{1F3DD}", desc: "El Nido island hopping, underground river" },
+  { name: "Boracay Bliss", price: "\\u20B19,999", dur: "3D/2N", emoji: "\\u{1F3D6}", desc: "White beach, water sports, sunset sailing" },
+  { name: "Dubai Explorer", price: "\\u20B135,999", dur: "5D/4N", emoji: "\\u{1F3D9}", desc: "Burj Khalifa, desert safari, city tours" },
+  { name: "Tokyo Discovery", price: "\\u20B132,999", dur: "5D/4N", emoji: "\\u{1F5FE}", desc: "Mt. Fuji, Shibuya, temples, food tours" },
 ];
 
 const props = [
-  { title: "Beachfront Condo in Boracay", type: "Condo", loc: "Boracay", price: "\u20B15.2M", emoji: "\u{1F3D6}" },
-  { title: "Modern Unit in BGC", type: "Condo", loc: "Taguig", price: "\u20B18.5M", emoji: "\u{1F3D9}" },
-  { title: "Vacation House in Tagaytay", type: "House", loc: "Tagaytay", price: "\u20B112M", emoji: "\u{1F3E1}" },
+  { title: "Beachfront Condo in Boracay", type: "Condo", loc: "Boracay", price: "\\u20B15.2M", emoji: "\\u{1F3D6}" },
+  { title: "Modern Unit in BGC", type: "Condo", loc: "Taguig", price: "\\u20B18.5M", emoji: "\\u{1F3D9}" },
+  { title: "Vacation House in Tagaytay", type: "House", loc: "Tagaytay", price: "\\u20B112M", emoji: "\\u{1F3E1}" },
 ];
 
 export default function Home() {
@@ -87,3 +89,7 @@ export default function Home() {
     </main>
   );
 }
+`;
+
+fs.writeFileSync('src/app/page.tsx', page, 'utf8');
+console.log('page.tsx fixed!');
