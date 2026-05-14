@@ -1,8 +1,8 @@
 const services = [
-  { emoji: "\u{1F3E2}", title: "Real Estate", desc: "Premium property investments" },
   { emoji: "\u{2708}\u{FE0F}", title: "Flight Booking", desc: "International & domestic ticketing" },
   { emoji: "\u{1F3E8}", title: "Hotel Reservations", desc: "Worldwide hotel and resort bookings" },
   { emoji: "\u{1F334}", title: "Tours & Experiences", desc: "Curated travel packages" },
+  { emoji: "\u{1F3E2}", title: "Real Estate", desc: "Premium property investments" },
 ];
 
 const pkgs = [
