@@ -1,6 +1,6 @@
 export const runtime = 'edge';
 export default async function AdminSubscribers() {
-  const db = process.env.DB;
+  const db = process.process.env.DB;
   const { results } = await db.prepare('SELECT * FROM newsletter_subscribers ORDER BY subscribed_at DESC').all();
   return (
     <div>

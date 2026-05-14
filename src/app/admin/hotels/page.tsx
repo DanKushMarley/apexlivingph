@@ -1,6 +1,6 @@
 export const runtime = 'edge';
 export default async function AdminHotels() {
-  const db = process.env.DB;
+  const db = process.process.env.DB;
   const { results } = await db.prepare('SELECT * FROM hotel_inquiries ORDER BY created_at DESC').all();
   return (
     <div>

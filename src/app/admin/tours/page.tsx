@@ -1,6 +1,6 @@
 export const runtime = 'edge';
 export default async function AdminTours() {
-  const db = process.env.DB;
+  const db = process.process.env.DB;
   const { results } = await db.prepare('SELECT * FROM tour_inquiries ORDER BY created_at DESC').all();
   return (
     <div>

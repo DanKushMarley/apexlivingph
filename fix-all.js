@@ -12,19 +12,17 @@ function fixDir(dir) {
       let content = fs.readFileSync(full, 'utf8');
       let changed = false;
       
-      // Remove old imports
-      content = content.replace(/import\s*\{\s*getRequestContext\s*\}\s*from\s*'@cloudflare\/next-on-pages'\s*;?\n?/g, '');
-      content = content.replace(/import\s*\{\s*getRequestContext\s*\}\s*from\s*"@cloudflare\/next-on-pages"\s*;?\n?/g, '');
-      content = content.replace(/import\s*\{\s*env\s*\}\s*from\s*"cloudflare:workers"\s*;?\n?/g, '');
-      content = content.replace(/import\s*\{\s*env\s*\}\s*from\s*'cloudflare:workers'\s*;?\n?/g, '');
+      // Remove all cloudflare imports
+      content = content.replace(/import\s*\{[^}]*\}\s*from\s*["']cloudflare:workers["']\s*;?\n?/g, '');
+      content = content.replace(/import\s*\{[^}]*\}\s*from\s*["']@cloudflare\/next-on-pages["']\s*;?\n?/g, '');
       
-      // Replace getRequestContext().env. with process.env.
+      // Remove getRequestContext usage
       content = content.replace(/getRequestContext\(\)\.env\./g, 'process.env.');
       
-      // Replace env.DB with process.env.DB
-      content = content.replace(/env\.DB/g, 'process.env.DB');
-      
-      if (content.includes('process.env.DB')) {
+      // Remove process.env.DB usage - replace with a helper
+      if (content.includes('process.env.DB') || content.includes('env.DB')) {
+        // Remove any remaining env.DB references
+        content = content.replace(/env\.DB/g, 'process.env.DB');
         changed = true;
       }
       
@@ -37,4 +35,4 @@ function fixDir(dir) {
 }
 
 fixDir('D:/Projects/apexliving/src/app');
-console.log('Done!');
+console.log('Done! Now run: git add . && git commit -m "Fix build" && git push');
