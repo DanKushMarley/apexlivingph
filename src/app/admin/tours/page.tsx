@@ -1,7 +1,7 @@
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { env } from "cloudflare:workers";
 export const runtime = 'edge';
 export default async function AdminTours() {
-  const db = getRequestContext().env.DB;
+  const db = env.DB;
   const { results } = await db.prepare('SELECT * FROM tour_inquiries ORDER BY created_at DESC').all();
   return (
     <div>
