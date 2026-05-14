@@ -10,13 +10,25 @@ function fixDir(dir) {
       fixDir(full);
     } else if (entry.name.endsWith('.ts') || entry.name.endsWith('.tsx')) {
       let content = fs.readFileSync(full, 'utf8');
-      if (content.includes('@cloudflare/next-on-pages') || content.includes('getRequestContext')) {
-        content = content.replace(/import\s*\{\s*getRequestContext\s*\}\s*from\s*'@cloudflare\/next-on-pages'\s*;?\n?/g, '');
-        content = content.replace(/import\s*\{\s*getRequestContext\s*\}\s*from\s*"@cloudflare\/next-on-pages"\s*;?\n?/g, '');
-        content = content.replace(/getRequestContext\(\)\.env\./g, 'env.');
-        if (!content.includes('import { env }') && content.includes('env.DB')) {
-          content = "import { env } from \"cloudflare:workers\";\n" + content;
-        }
+      let changed = false;
+      
+      // Remove old imports
+      content = content.replace(/import\s*\{\s*getRequestContext\s*\}\s*from\s*'@cloudflare\/next-on-pages'\s*;?\n?/g, '');
+      content = content.replace(/import\s*\{\s*getRequestContext\s*\}\s*from\s*"@cloudflare\/next-on-pages"\s*;?\n?/g, '');
+      content = content.replace(/import\s*\{\s*env\s*\}\s*from\s*"cloudflare:workers"\s*;?\n?/g, '');
+      content = content.replace(/import\s*\{\s*env\s*\}\s*from\s*'cloudflare:workers'\s*;?\n?/g, '');
+      
+      // Replace getRequestContext().env. with process.env.
+      content = content.replace(/getRequestContext\(\)\.env\./g, 'process.env.');
+      
+      // Replace env.DB with process.env.DB
+      content = content.replace(/env\.DB/g, 'process.env.DB');
+      
+      if (content.includes('process.env.DB')) {
+        changed = true;
+      }
+      
+      if (changed) {
         fs.writeFileSync(full, content, 'utf8');
         console.log('FIXED: ' + full);
       }
