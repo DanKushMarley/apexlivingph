@@ -26,7 +26,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <h3>YOUR GLOBAL PARTNER IN</h3>
-          <h1>{"LIVING"}{"& TRAVEL"}</h1>
+          <h1>{"LIVING"}{" & TRAVEL"}</h1>
           <p>Homes. Travel. Experiences. Worldwide.</p>
           <div className="services-icons">
             {services.map((s) => (
