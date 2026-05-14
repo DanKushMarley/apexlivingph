@@ -24,7 +24,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <h3>YOUR GLOBAL PARTNER IN</h3>
-          <h1>LIVING&lt;br /&gt;&amp; TRAVEL</h1>
+          <h1>{"LIVING"}<br/>{"& TRAVEL"}</h1>
           <p>Homes. Travel. Experiences. Worldwide.</p>
           <div className="services-icons">
             {services.map((s) => (
@@ -68,7 +68,7 @@ export default function Home() {
             <div key={p.title} className="card">
               <div className="emoji">{p.emoji}</div>
               <h3>{p.title}</h3>
-              <p className="meta">{p.type} &amp;bull; {p.loc}</p>
+              <p className="meta">{p.type} &bull; {p.loc}</p>
               <p className="price">{p.price}</p>
               <span className="badge-available">Available</span>
             </div>
