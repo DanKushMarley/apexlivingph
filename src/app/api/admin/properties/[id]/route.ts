@@ -1,7 +1,7 @@
 export const runtime = 'edge';
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
   const fd = await req.formData();
-  const db = process.process.env.DB;
+  const db = getRequestContext().env.DB;
   await db.prepare('UPDATE properties SET title=?,type=?,location=?,price=?,description=?,images=?,agent_contact=?,status=? WHERE id=?').bind(fd.get('title'),fd.get('type'),fd.get('location'),fd.get('price'),fd.get('description'),fd.get('images'),fd.get('agent_contact'),fd.get('status'),params.id).run();
   return Response.redirect(new URL('/admin/properties?saved=1',req.url));
 }
