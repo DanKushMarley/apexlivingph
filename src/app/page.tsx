@@ -1,3 +1,9 @@
+import FlightForm from "@/app/components/FlightForm";
+<main className="p-10">
+  <h1>Apex Living PH</h1>
+
+  <FlightForm />
+</main>
 const services = [
   { emoji: "\u{2708}\u{FE0F}", title: "Flight Booking", desc: "International & domestic ticketing" },
   { emoji: "\u{1F3E8}", title: "Hotel Reservations", desc: "Worldwide hotel and resort bookings" },
