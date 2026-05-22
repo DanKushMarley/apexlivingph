@@ -4,8 +4,7 @@ function w(f,c){fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(
 const b='D:/Projects/apexliving/src/app';
 
 // Admin Properties
-w(b+'/admin/properties/page.tsx',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/admin/properties/page.tsx',
 export default async function AdminProperties() {
   const db = getRequestContext().env.DB;
   const { results } = await db.prepare('SELECT * FROM properties ORDER BY created_at DESC').all();
@@ -73,8 +72,8 @@ w(b+'/admin/properties/new/page.tsx',`export default function NewPropertyPage() 
 }`);
 
 // API: Admin Properties
-w(b+'/api/admin/properties/route.ts',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/api/admin/properties/route.ts',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export async function GET() {
   const db = getRequestContext().env.DB;
   const { results } = await db.prepare('SELECT * FROM properties ORDER BY created_at DESC').all();
@@ -88,8 +87,8 @@ export async function POST(req: Request) {
 }`);
 
 // API: Admin Properties [id]
-w(b+'/api/admin/properties/[id]/route.ts',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/api/admin/properties/[id]/route.ts',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
   const fd = await req.formData();
   const db = getRequestContext().env.DB;

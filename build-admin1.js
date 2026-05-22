@@ -4,8 +4,7 @@ function w(f,c){fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(
 const b='D:/Projects/apexliving/src/app';
 
 // Admin Flights
-w(b+'/admin/flights/page.tsx',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/admin/flights/page.tsx',
 export default async function AdminFlights() {
   const db = getRequestContext().env.DB;
   const { results } = await db.prepare('SELECT * FROM flight_inquiries ORDER BY created_at DESC').all();
@@ -39,8 +38,8 @@ export default async function AdminFlights() {
 }`);
 
 // Admin Hotels
-w(b+'/admin/hotels/page.tsx',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/admin/hotels/page.tsx',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export default async function AdminHotels() {
   const db = getRequestContext().env.DB;
   const { results } = await db.prepare('SELECT * FROM hotel_inquiries ORDER BY created_at DESC').all();
@@ -75,8 +74,8 @@ export default async function AdminHotels() {
 }`);
 
 // Admin Tours
-w(b+'/admin/tours/page.tsx',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/admin/tours/page.tsx',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export default async function AdminTours() {
   const db = getRequestContext().env.DB;
   const { results } = await db.prepare('SELECT * FROM tour_inquiries ORDER BY created_at DESC').all();
@@ -108,8 +107,8 @@ export default async function AdminTours() {
 }`);
 
 // Admin Contacts
-w(b+'/admin/contacts/page.tsx',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/admin/contacts/page.tsx',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export default async function AdminContacts() {
   const db = getRequestContext().env.DB;
   const { results } = await db.prepare('SELECT * FROM contact_messages ORDER BY created_at DESC').all();
@@ -135,8 +134,8 @@ export default async function AdminContacts() {
 }`);
 
 // Admin Subscribers
-w(b+'/admin/subscribers/page.tsx',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/admin/subscribers/page.tsx',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export default async function AdminSubscribers() {
   const db = getRequestContext().env.DB;
   const { results } = await db.prepare('SELECT * FROM newsletter_subscribers ORDER BY subscribed_at DESC').all();

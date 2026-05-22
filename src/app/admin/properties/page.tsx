@@ -1,6 +1,6 @@
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getRequestContext } from '';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 export default async function AdminProperties() {
   const db = getRequestContext().env.DB;

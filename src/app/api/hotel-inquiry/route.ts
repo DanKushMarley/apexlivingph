@@ -1,6 +1,6 @@
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getRequestContext } from '';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 export async function POST(req: Request) {
   const fd = await req.formData();

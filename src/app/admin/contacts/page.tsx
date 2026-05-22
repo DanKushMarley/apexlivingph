@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export default async function AdminContacts() {
   const db = process.process.env.DB;
   const { results } = await db.prepare('SELECT * FROM contact_messages ORDER BY created_at DESC').all();

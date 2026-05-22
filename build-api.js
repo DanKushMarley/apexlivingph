@@ -3,8 +3,7 @@ const path = require('path');
 function w(f,c){fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,c,'utf8');console.log('OK '+f);}
 const b='D:/Projects/apexliving/src/app';
 
-w(b+'/api/flight-inquiry/route.ts',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/api/flight-inquiry/route.ts',
 export async function POST(req: Request) {
   const fd = await req.formData();
   const db = getRequestContext().env.DB;
@@ -12,8 +11,8 @@ export async function POST(req: Request) {
   return Response.redirect(new URL('/flights?success=1',req.url));
 }`);
 
-w(b+'/api/hotel-inquiry/route.ts',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/api/hotel-inquiry/route.ts',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export async function POST(req: Request) {
   const fd = await req.formData();
   const db = getRequestContext().env.DB;
@@ -21,8 +20,8 @@ export async function POST(req: Request) {
   return Response.redirect(new URL('/hotels?success=1',req.url));
 }`);
 
-w(b+'/api/tour-inquiry/route.ts',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/api/tour-inquiry/route.ts',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export async function POST(req: Request) {
   const fd = await req.formData();
   const db = getRequestContext().env.DB;
@@ -30,8 +29,8 @@ export async function POST(req: Request) {
   return Response.redirect(new URL('/tours?success=1',req.url));
 }`);
 
-w(b+'/api/contact/route.ts',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/api/contact/route.ts',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export async function POST(req: Request) {
   const fd = await req.formData();
   const db = getRequestContext().env.DB;
@@ -39,8 +38,8 @@ export async function POST(req: Request) {
   return Response.redirect(new URL('/contact?success=1',req.url));
 }`);
 
-w(b+'/api/newsletter/route.ts',`import { getRequestContext } from '@cloudflare/next-on-pages';
-export const runtime = 'edge';
+w(b+'/api/newsletter/route.ts',`import { getRequestContext } from '';
+export const runtime = 'nodejs';
 export async function POST(req: Request) {
   const fd = await req.formData();
   const db = getRequestContext().env.DB;
