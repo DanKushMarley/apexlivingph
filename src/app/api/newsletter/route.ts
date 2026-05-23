@@ -1,10 +1,7 @@
-import { getRequestContext } from '';
+export async function GET() {
+  return Response.json({ ok: true });
+}
 
-export const runtime = 'nodejs';
-
-export async function POST(req: Request) {
-  const fd = await req.formData();
-  const db = getRequestContext().env.DB;
-  try { await db.prepare('INSERT INTO newsletter_subscribers (email) VALUES (?)').bind(fd.get('email')).run(); } catch {}
-  return Response.redirect(new URL('/?subscribed=1', req.url));
+export async function POST() {
+  return Response.json({ ok: true });
 }

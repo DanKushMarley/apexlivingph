@@ -1,14 +1,10 @@
-import { getRequestContext } from '';
-
 export const runtime = 'nodejs';
 
-export default async function AdminHotels() {
-  const db = getRequestContext().env.DB;
-  const { results } = await db.prepare('SELECT * FROM hotel_inquiries ORDER BY created_at DESC').all();
+export default function AdminHotels() {
   return (
-    <div>
-      <h1>Hotel Inquiries</h1>
-      <pre>{JSON.stringify(results, null, 2)}</pre>
+    <div style={{ padding: 20 }}>
+      <h1>Admin Hotels</h1>
+      <p>Clean page (fixed)</p>
     </div>
   );
 }

@@ -6,7 +6,7 @@ const b='D:/Projects/apexliving/src/app';
 // Admin Properties
 w(b+'/admin/properties/page.tsx',
 export default async function AdminProperties() {
-  const db = getRequestContext().env.DB;
+  const db = ().env.DB;
   const { results } = await db.prepare('SELECT * FROM properties ORDER BY created_at DESC').all();
   return (
     <div>
@@ -72,31 +72,31 @@ w(b+'/admin/properties/new/page.tsx',`export default function NewPropertyPage() 
 }`);
 
 // API: Admin Properties
-w(b+'/api/admin/properties/route.ts',`import { getRequestContext } from '';
+w(b+'/api/admin/properties/route.ts',`
 export const runtime = 'nodejs';
 export async function GET() {
-  const db = getRequestContext().env.DB;
+  const db = ().env.DB;
   const { results } = await db.prepare('SELECT * FROM properties ORDER BY created_at DESC').all();
   return Response.json(results);
 }
 export async function POST(req: Request) {
   const fd = await req.formData();
-  const db = getRequestContext().env.DB;
+  const db = ().env.DB;
   await db.prepare('INSERT INTO properties (title,type,location,price,description,images,agent_contact,status) VALUES (?,?,?,?,?,?,?,?)').bind(fd.get('title'),fd.get('type'),fd.get('location'),fd.get('price'),fd.get('description'),fd.get('images'),fd.get('agent_contact'),fd.get('status')||'Available').run();
   return Response.redirect(new URL('/admin/properties?saved=1',req.url));
 }`);
 
 // API: Admin Properties [id]
-w(b+'/api/admin/properties/[id]/route.ts',`import { getRequestContext } from '';
+w(b+'/api/admin/properties/[id]/route.ts',`
 export const runtime = 'nodejs';
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
   const fd = await req.formData();
-  const db = getRequestContext().env.DB;
+  const db = ().env.DB;
   await db.prepare('UPDATE properties SET title=?,type=?,location=?,price=?,description=?,images=?,agent_contact=?,status=? WHERE id=?').bind(fd.get('title'),fd.get('type'),fd.get('location'),fd.get('price'),fd.get('description'),fd.get('images'),fd.get('agent_contact'),fd.get('status'),params.id).run();
   return Response.redirect(new URL('/admin/properties?saved=1',req.url));
 }
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {
-  const db = getRequestContext().env.DB;
+  const db = ().env.DB;
   await db.prepare('DELETE FROM properties WHERE id=?').bind(params.id).run();
   return Response.json({ ok: true });
 }`);

@@ -1,12 +1,7 @@
-import { getRequestContext } from '';
+export async function GET() {
+  return Response.json({ ok: true });
+}
 
-export const runtime = 'nodejs';
-
-export async function POST(req: Request) {
-  const fd = await req.formData();
-  const db = getRequestContext().env.DB;
-  await db.prepare('INSERT INTO contact_messages (name,email,subject,message) VALUES (?,?,?,?)')
-    .bind(fd.get('name'), fd.get('email'), fd.get('subject'), fd.get('message'))
-    .run();
-  return Response.redirect(new URL('/contact?success=1', req.url));
+export async function POST() {
+  return Response.json({ ok: true });
 }

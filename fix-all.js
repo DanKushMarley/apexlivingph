@@ -16,8 +16,8 @@ function fixDir(dir) {
       content = content.replace(/import\s*\{[^}]*\}\s*from\s*["']cloudflare:workers["']\s*;?\n?/g, '');
       content = content.replace(/import\s*\{[^}]*\}\s*from\s*["']@cloudflare\/next-on-pages["']\s*;?\n?/g, '');
       
-      // Remove getRequestContext usage
-      content = content.replace(/getRequestContext\(\)\.env\./g, 'process.env.');
+      // Remove  usage
+      content = content.replace(/\(\)\.env\./g, 'process.env.');
       
       // Remove process.env.DB usage - replace with a helper
       if (content.includes('process.env.DB') || content.includes('env.DB')) {
