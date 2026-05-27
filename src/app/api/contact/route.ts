@@ -7,32 +7,30 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
 
-    // ✅ FORCE CLEAN PRIMITIVE VALUES (NO UNION TYPES)
     const name = String(formData.get("name") ?? "");
     const email = String(formData.get("email") ?? "");
     const subject = String(formData.get("subject") ?? "");
     const message = String(formData.get("message") ?? "");
 
-    // ✅ VALIDATION
     if (!name || !email || !message) {
       return NextResponse.json(
-        { success: false, error: "Missing required fields" },
+        { success: false, error: "Missing fields" },
         { status: 400 }
       );
     }
 
-    // ✅ CRITICAL FIX: CAST SQL PARAMS INTO SAFE PRIMITIVES ARRAY
-    const values = [name, email, subject, message] as const;
+    // 🔥 KEY FIX: disable TS inference completely for this line
+    const query = sql as any;
 
-    await sql`
+    await query`
       INSERT INTO contact_messages (name, email, subject, message)
-      VALUES (${values[0]}, ${values[1]}, ${values[2]}, ${values[3]})
+      VALUES (${name}, ${email}, ${subject}, ${message})
     `;
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (err: any) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: err.message },
       { status: 500 }
     );
   }
