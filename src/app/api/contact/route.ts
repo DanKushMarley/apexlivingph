@@ -7,17 +7,13 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
 
-    // ✅ SAFE EXTRACTION (FORCE STRING ONLY)
-    const getString = (key: string) => {
-      const value = formData.get(key);
-      return typeof value === "string" ? value : "";
-    };
+    // ✅ FORCE CLEAN PRIMITIVE VALUES (NO UNION TYPES)
+    const name = String(formData.get("name") ?? "");
+    const email = String(formData.get("email") ?? "");
+    const subject = String(formData.get("subject") ?? "");
+    const message = String(formData.get("message") ?? "");
 
-    const name = getString("name");
-    const email = getString("email");
-    const subject = getString("subject");
-    const message = getString("message");
-
+    // ✅ VALIDATION
     if (!name || !email || !message) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
@@ -25,10 +21,12 @@ export async function POST(req: Request) {
       );
     }
 
-    // ✅ SAFE POSTGRES INSERT (NO TYPE INFERENCE ISSUES)
+    // ✅ CRITICAL FIX: CAST SQL PARAMS INTO SAFE PRIMITIVES ARRAY
+    const values = [name, email, subject, message] as const;
+
     await sql`
       INSERT INTO contact_messages (name, email, subject, message)
-      VALUES (${String(name)}, ${String(email)}, ${String(subject)}, ${String(message)})
+      VALUES (${values[0]}, ${values[1]}, ${values[2]}, ${values[3]})
     `;
 
     return NextResponse.json({ success: true });
