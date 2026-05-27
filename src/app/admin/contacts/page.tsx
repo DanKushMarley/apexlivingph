@@ -1,23 +1,37 @@
-import sql from "@/app/lib/db";
-
 export const runtime = "nodejs";
 
-export default async function AdminContacts() {
-  const contacts = await sql`
-    SELECT * FROM contact_messages
-    ORDER BY created_at DESC
-  `;
+import sql from "@/app/lib/db";
 
-  return (
-    <div>
-      <h1>Contacts</h1>
-      {contacts.map((c: any) => (
-        <div key={c.id} style={{ marginBottom: "1rem" }}>
-          <p><b>{c.name}</b> ({c.email})</p>
-          <p>{c.subject}</p>
-          <p>{c.message}</p>
-        </div>
-      ))}
-    </div>
-  );
+export default async function AdminContacts() {
+  try {
+    const contacts = await sql`
+      SELECT * FROM contact_messages
+      ORDER BY created_at DESC
+    `;
+
+    return (
+      <div style={{ padding: "2rem" }}>
+        <h1>Contacts</h1>
+
+        {contacts.length === 0 ? (
+          <p>No messages yet</p>
+        ) : (
+          <ul>
+            {contacts.map((c: any) => (
+              <li key={c.id}>
+                <strong>{c.name}</strong> — {c.email}
+                <br />
+                {c.subject}
+                <br />
+                {c.message}
+                <hr />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  } catch (err) {
+    return <p>DB connection error</p>;
+  }
 }
