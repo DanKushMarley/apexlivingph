@@ -7,23 +7,28 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
 
-    // ✅ FORCE SAFE STRING EXTRACTION
-    const name = (formData.get("name") ?? "").toString();
-    const email = (formData.get("email") ?? "").toString();
-    const subject = (formData.get("subject") ?? "").toString();
-    const message = (formData.get("message") ?? "").toString();
+    // ✅ SAFE EXTRACTION (FORCE STRING ONLY)
+    const getString = (key: string) => {
+      const value = formData.get(key);
+      return typeof value === "string" ? value : "";
+    };
+
+    const name = getString("name");
+    const email = getString("email");
+    const subject = getString("subject");
+    const message = getString("message");
 
     if (!name || !email || !message) {
       return NextResponse.json(
-        { success: false, error: "Missing fields" },
+        { success: false, error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    // ✅ IMPORTANT: CAST VALUES AS LITERALS FOR POSTGRES
+    // ✅ SAFE POSTGRES INSERT (NO TYPE INFERENCE ISSUES)
     await sql`
       INSERT INTO contact_messages (name, email, subject, message)
-      VALUES (${name as string}, ${email as string}, ${subject as string}, ${message as string})
+      VALUES (${String(name)}, ${String(email)}, ${String(subject)}, ${String(message)})
     `;
 
     return NextResponse.json({ success: true });
