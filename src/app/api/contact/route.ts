@@ -7,23 +7,23 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
 
-    // ✅ FORCE CLEAN STRINGS (this fixes your error)
-    const name = String(formData.get("name") || "");
-    const email = String(formData.get("email") || "");
-    const subject = String(formData.get("subject") || "");
-    const message = String(formData.get("message") || "");
+    // ✅ FORCE SAFE STRING EXTRACTION
+    const name = (formData.get("name") ?? "").toString();
+    const email = (formData.get("email") ?? "").toString();
+    const subject = (formData.get("subject") ?? "").toString();
+    const message = (formData.get("message") ?? "").toString();
 
-    // ❗ Guard (optional but safe)
     if (!name || !email || !message) {
       return NextResponse.json(
-        { success: false, error: "Missing required fields" },
+        { success: false, error: "Missing fields" },
         { status: 400 }
       );
     }
 
+    // ✅ IMPORTANT: CAST VALUES AS LITERALS FOR POSTGRES
     await sql`
       INSERT INTO contact_messages (name, email, subject, message)
-      VALUES (${name}, ${email}, ${subject}, ${message})
+      VALUES (${name as string}, ${email as string}, ${subject as string}, ${message as string})
     `;
 
     return NextResponse.json({ success: true });
