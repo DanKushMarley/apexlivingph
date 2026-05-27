@@ -6,12 +6,12 @@ export const runtime = "nodejs";
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
-
+    
     const name = String(formData.get("name") ?? "");
     const email = String(formData.get("email") ?? "");
     const subject = String(formData.get("subject") ?? "");
     const message = String(formData.get("message") ?? "");
-
+    
     if (!name || !email || !message) {
       return NextResponse.json(
         { success: false, error: "Missing fields" },
