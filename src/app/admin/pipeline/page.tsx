@@ -1,5 +1,3 @@
-bg-white border border-gray-100 shadow-sm
-import { supabase } from "@/lib/supabaseClient";
 import CRMBoard from "@/components/CRMBoard";
 import CRMAnalytics from "@/components/CRMAnalytics";
 <CRMAnalytics inquiries={inquiries} />
