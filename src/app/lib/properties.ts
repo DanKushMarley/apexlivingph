@@ -7,13 +7,12 @@ export async function getProperties() {
     .order("created_at", { ascending: false });
 
   if (error) {
-    console.error("Supabase error:", error.message);
+    console.error(error);
     return [];
   }
 
   return data;
 }
-import { supabase } from "@/lib/supabaseClient";
 
 export async function addProperty(property: {
   title: string;
@@ -28,7 +27,7 @@ export async function addProperty(property: {
     .select();
 
   if (error) {
-    console.error("Insert error:", error.message);
+    console.error(error);
     return null;
   }
 
