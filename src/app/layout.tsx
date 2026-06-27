@@ -1,32 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Apex Living PH — Travel, Flights, Hotels, Tours & Properties",
-  description: "Your global partner in living and travel. Premium airline ticketing, hotel reservations, tours, and property opportunities.",
+  title: "Apex Living International — Living & Travel",
+  description: "Your global partner in real estate, flights, hotels, tours and visa assistance.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <header className="navbar">
-          <a href="/" className="logo">Apex Living PH</a>
-          <nav>
-            <a href="/flights">Flights</a>
-            <a href="/tours">Tours</a>
-            <a href="/hotels">Hotels</a>
-            <a href="/properties">Properties</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-          </nav>
-        </header>
-        {children}
-        <footer className="footer">
-          <div className="brand">Apex Living PH</div>
-          <p>Homes. Travel. Experiences. Worldwide.</p>
-          <p>&copy; 2026 Apex Living PH. All rights reserved.</p>
-        </footer>
+      <body style={{ margin: 0, padding: 0, background: "#F7F4EE" }}>
+        <Navbar />
+        <main>{children}</main>
       </body>
     </html>
   );
