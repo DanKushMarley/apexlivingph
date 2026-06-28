@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "node -e \"const fs=require('fs');const f='src/app/components/FlightForm.tsx';if(fs.existsSync(f)){fs.unlinkSync(f);}\"",
+    "prebuild": "node -e \"const fs=require('fs');['src/app/components/FlightForm.tsx','src/components/InquiryCard.tsx'].forEach(f=>{if(fs.existsSync(f)){fs.unlinkSync(f);}});\"",
     "build": "next build",
     "dev": "next dev",
     "start": "next start"
