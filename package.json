@@ -1,33 +1,33 @@
-﻿{
-    "name":  "apexliving",
-    "version":  "0.1.0",
-    "private":  true,
-    "scripts":  {
-                    "dev":  "next dev",
-                    "build":  "next build",
-                    "start":  "next start",
-                    "prebuild":  "node -e \"const fs=require(\u0027fs\u0027);const f=\u0027src/app/components/FlightForm.tsx\u0027;if(fs.existsSync(f)){fs.unlinkSync(f);console.log(\u0027Deleted \u0027+f)}\""
-                },
-    "dependencies":  {
-                         "@hello-pangea/dnd":  "^18.0.1",
-                         "@prisma/client":  "^7.8.0",
-                         "@supabase/supabase-js":  "^2.106.2",
-                         "dotenv":  "^17.4.2",
-                         "lucide-react":  "^1.17.0",
-                         "next":  "^16.2.6",
-                         "postgres":  "^3.4.9",
-                         "prisma":  "^7.8.0",
-                         "react":  "^19.2.6",
-                         "react-dom":  "^19.2.6"
-                     },
-    "devDependencies":  {
-                            "@opennextjs/cloudflare":  "^1.20.1",
-                            "@tailwindcss/postcss":  "^4.3.0",
-                            "@types/node":  "25.9.1",
-                            "@types/react":  "19.2.15",
-                            "autoprefixer":  "^10.5.2",
-                            "postcss":  "^8.5.15",
-                            "tailwindcss":  "^3.4.19",
-                            "typescript":  "6.0.3"
-                        }
+{
+  "name": "apexliving",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "node -e \"const fs=require('fs');const f='src/app/components/FlightForm.tsx';if(fs.existsSync(f)){fs.unlinkSync(f);}\"",
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1",
+    "@prisma/client": "^7.8.0",
+    "@supabase/supabase-js": "^2.106.2",
+    "dotenv": "^17.4.2",
+    "lucide-react": "^1.17.0",
+    "next": "^16.2.6",
+    "postgres": "^3.4.9",
+    "prisma": "^7.8.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.1",
+    "@tailwindcss/postcss": "^4.3.0",
+    "@types/node": "25.9.1",
+    "@types/react": "19.2.15",
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^3.4.19",
+    "typescript": "6.0.3"
+  }
 }
