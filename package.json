@@ -6,7 +6,8 @@
     "prebuild": "node -e \"const fs=require('fs');['src/app/components/FlightForm.tsx','src/components/InquiryCard.tsx'].forEach(f=>{if(fs.existsSync(f)){fs.unlinkSync(f);}});\"",
     "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "opennextjs-cloudflare build && wrangler deploy"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",
@@ -31,3 +32,4 @@
     "typescript": "6.0.3"
   }
 }
+
